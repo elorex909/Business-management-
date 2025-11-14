@@ -1,0 +1,676 @@
+/* --- Root Variables & Base Setup --- */
+:root {
+    --color-primary-dark: #1a2b3c; /* Dark Tech Blue */
+    --color-primary-light: #2a3f54;
+    --color-accent: #00BFFF; /* Deep Sky Blue */
+    
+    /* Light Mode Colors */
+    --color-bg-light: #ffffff;
+    --color-bg-gray-light: #f4f7f6;
+    --color-text-light: #333;
+    --color-card-bg-light: #ffffff;
+    --color-form-bg-light: #ffffff;
+    --color-input-bg-light: #ffffff;
+    --color-input-border-light: #ccc;
+
+    /* Dark Mode Colors */
+    --color-bg-dark: #121212;
+    --color-bg-gray-dark: #1a1a1a;
+    --color-text-dark: #f0f0f0;
+    --color-card-bg-dark: #1e1e1e;
+    --color-form-bg-dark: #1e1e1e;
+    --color-input-bg-dark: #333;
+    --color-input-border-dark: #444;
+
+    --font-en: 'Poppins', 'Arial', sans-serif;
+    --font-ar: 'Tajawal', 'Tahoma', sans-serif;
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-en);
+    line-height: 1.7;
+    color: var(--color-text-light);
+    background-color: var(--color-bg-light);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+body.dark-mode {
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-dark);
+}
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .section-title {
+    color: var(--color-text-dark);
+}
+
+.content-section {
+    padding: 4rem 0;
+}
+
+.content-section-gray {
+    padding: 4rem 0;
+    background-color: var(--color-bg-gray-light);
+    transition: background-color var(--transition-speed);
+}
+body.dark-mode .content-section-gray {
+    background-color: var(--color-bg-gray-dark);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-align: center;
+}
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+}
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+    transform: translateY(-3px);
+}
+.btn.btn-disabled {
+    background-color: #aaa;
+    border-color: #aaa;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* --- Arabic Content Styling --- */
+.arabic-content-box {
+    direction: rtl;
+    font-family: var(--font-ar);
+    text-align: right;
+    background: var(--color-card-bg-light);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    border-right: 6px solid var(--color-accent);
+    max-width: 900px;
+    margin: 1.5rem auto;
+    font-size: 1.15rem;
+    box-shadow: var(--shadow-md);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+body.dark-mode .arabic-content-box {
+    background: var(--color-card-bg-dark);
+}
+
+.arabic-content-box h3,
+.arabic-content-box h2 {
+    color: var(--color-primary-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-bg-gray-light);
+    transition: color var(--transition-speed), border-color var(--transition-speed);
+}
+body.dark-mode .arabic-content-box h3,
+body.dark-mode .arabic-content-box h2 {
+    color: var(--color-text-dark);
+    border-bottom-color: var(--color-input-border-dark);
+}
+
+.arabic-content-box p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+}
+.arabic-content-box ul {
+    list-style-type: '✓ '; /* Custom bullet */
+    list-style-position: inside;
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.arabic-content-box li {
+    margin-bottom: 0.75rem;
+}
+.arabic-subtitle {
+    font-family: var(--font-ar);
+    direction: rtl;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary-light);
+}
+
+/* --- CS Notes Box (SIMPLIFIED) --- */
+.cs-notes {
+    background: #1e1e1e; /* VS Code Dark */
+    color: #d4d4d4;
+    font-family: var(--font-ar); /* Use Arabic font */
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+    direction: rtl; /* Make it RTL */
+    text-align: right;
+    border-right: 6px solid var(--color-accent); /* Border on the right */
+    border-left: none;
+    font-size: 1.05rem; /* Slightly larger text */
+    line-height: 1.8;
+}
+.cs-notes h4 {
+    color: #569cd6; /* VS Code function color */
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-family: var(--font-en); /* Keep EN header */
+    text-align: left; /* Align header to left */
+    direction: ltr;
+    display: block;
+}
+.cs-notes p {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-ar);
+}
+.cs-notes p strong {
+    color: #9cdcfe; /* VS Code variable color */
+    font-weight: 700;
+}
+.cs-notes .comment {
+    color: #6a9955; /* VS Code comment color */
+    font-style: italic;
+}
+
+
+/* --- Header & Navigation --- */
+.navbar {
+    background: var(--color-bg-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: background-color var(--transition-speed);
+}
+body.dark-mode .navbar {
+    background: var(--color-card-bg-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .logo {
+    color: var(--color-text-dark);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .nav-links a {
+    color: var(--color-text-dark);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width var(--transition-speed);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Adjusted gap */
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-input-border-light);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    border-right: none;
+    font-family: var(--font-en);
+    background-color: var(--color-input-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+body.dark-mode .search-bar input {
+    background-color: var(--color-input-bg-dark);
+    color: var(--color-text-dark);
+    border-color: var(--color-input-border-dark);
+}
+
+.search-bar button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-primary-light);
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* --- Dark Mode Toggle Button --- */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-dark);
+    transition: color var(--transition-speed), background-color var(--transition-speed);
+}
+body.dark-mode .dark-mode-toggle {
+    color: var(--color-text-dark);
+}
+.dark-mode-toggle:hover {
+    background-color: var(--color-bg-gray-light);
+}
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: var(--color-primary-light);
+}
+
+.dark-mode-toggle .icon-sun,
+.dark-mode-toggle .icon-moon {
+    width: 22px;
+    height: 22px;
+}
+
+.dark-mode-toggle .icon-sun {
+    display: none;
+}
+.dark-mode-toggle .icon-moon {
+    display: block;
+}
+
+body.dark-mode .dark-mode-toggle .icon-sun {
+    display: block;
+}
+body.dark-mode .dark-mode-toggle .icon-moon {
+    display: none;
+}
+
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-primary-dark);
+    transition: all var(--transition-speed);
+}
+body.dark-mode .menu-toggle span {
+    background-color: var(--color-text-dark);
+}
+
+
+/* --- Hero Section --- */
+#hero {
+    background: linear-gradient(to right, rgba(26, 43, 60, 0.9), rgba(42, 63, 84, 0.9));
+    color: var(--color-white);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+#hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+#hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* --- Courses Section --- */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.course-card {
+    background: var(--color-card-bg-light);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+}
+body.dark-mode .course-card {
+    background: var(--color-card-bg-dark);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .card-content h3 {
+    color: var(--color-text-dark);
+}
+
+
+.card-content p {
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes button to bottom */
+}
+.card-content .btn {
+    margin-top: auto; /* Aligns button to bottom */
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    border-color: var(--color-primary-light);
+}
+.card-content .btn:hover {
+    background-color: transparent;
+    color: var(--color-primary-light);
+}
+
+/* --- Contact Section --- */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--color-form-bg-light);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    transition: background-color var(--transition-speed);
+}
+body.dark-mode .contact-form {
+    background: var(--color-form-bg-dark);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    transition: color var(--transition-speed);
+}
+body.dark-mode .form-group label {
+    color: var(--color-text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-family: var(--font-en);
+    border: 1px solid var(--color-input-border-light);
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+    background-color: var(--color-input-bg-light);
+    color: var(--color-text-light);
+}
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: var(--color-input-bg-dark);
+    color: var(--color-text-dark);
+    border-color: var(--color-input-border-dark);
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+}
+
+/* NEW STYLES FOR PLACEHOLDER */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+    opacity: 1; /* Firefox */
+    transition: color var(--transition-speed);
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: #777; /* Lighter gray for dark bg */
+}
+/* END OF NEW STYLES */
+
+
+/* --- Lesson Page Styling --- */
+.lesson-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem; /* Padding on sides, no top/bottom padding */
+}
+
+.lesson-title {
+    font-size: 2.75rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 2.5rem;
+    text-align: left;
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 1rem;
+    margin-top: 2rem;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .lesson-title {
+    color: var(--color-text-dark);
+}
+
+
+.lesson-resources {
+    background: var(--color-bg-gray-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin: 2rem auto;
+    max-width: 900px;
+    transition: background-color var(--transition-speed);
+}
+body.dark-mode .lesson-resources {
+    background: var(--color-card-bg-dark);
+}
+
+.lesson-resources h3 {
+    font-size: 1.5rem;
+    font-family: var(--font-en);
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    transition: color var(--transition-speed);
+}
+body.dark-mode .lesson-resources h3 {
+    color: var(--color-text-dark);
+}
+
+.lesson-resources p {
+    font-family: var(--font-en);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 2rem;
+}
+.footer-credit {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    .nav-right {
+        gap: 0.5rem;
+    }
+    
+    .search-bar {
+        display: none; /* Hide in nav, can be moved into mobile menu */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px; /* Height of navbar */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    body.dark-mode .nav-links {
+        background-color: var(--color-card-bg-dark);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+    .nav-links li {
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-gray-light);
+    }
+    body.dark-mode .nav-links a {
+        border-bottom-color: var(--color-input-border-dark);
+    }
+
+    .nav-links a::after {
+        display: none; /* Disable underline effect on mobile menu */
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    /* Mobile menu animation */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .lesson-title {
+        font-size: 2.2rem;
+    }
+}

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Mobile Menu Toggle ---
+    // --- 1. Mobile Menu Toggle ---
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Close mobile menu when a link is clicked ---
+    // --- 2. Close mobile menu when a link is clicked ---
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Dark Mode Toggle Logic ---
+    // --- 3. Dark Mode Toggle Logic ---
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     const body = document.body;
 
@@ -77,6 +77,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyTheme('dark');
                 localStorage.setItem('theme', 'dark');
             }
+        });
+    }
+
+    // --- 4. Formspree Contact Form Logic ---
+    const contactForm = document.getElementById('contact-form');
+    const formSuccessMessage = document.getElementById('form-success');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // نوقف الإرسال العادي
+
+            const formData = new FormData(this);
+            
+            // This is your Formspree URL
+            const formspreeURL = "https://formspree.io/f/xgvralvk"; 
+
+            fetch(formspreeURL, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // لو الرسالة وصلت
+                    contactForm.style.display = "none"; // نخفي الفورم
+                    formSuccessMessage.style.display = "block"; // نظهر رسالة الشكر
+                } else {
+                    // لو حصل مشكلة (زي إن اللينك غلط)
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form.");
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                // لو فيه مشكلة في النت
+                alert("Error connecting to the server. Please check your internet connection.");
+            });
         });
     }
 

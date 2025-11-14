@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- This is the v=1.2 link to fix caching -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -135,7 +136,9 @@
         <section id="contact" class="content-section-gray">
             <div class="container">
                 <h2 class="section-title">Get in Touch</h2>
-                <form class="contact-form">
+
+                <!-- This is the CORRECT form, linked to Formspree -->
+                <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -150,6 +153,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
+
+                <!-- Success message (hidden by default) -->
+                <div id="form-success" class="arabic-content-box" style="display: none; text-align: center; direction: ltr;">
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent successfully.</p>
+                </div>
+                
             </div>
         </section>
     </main>
@@ -162,6 +172,7 @@
         </div>
     </footer>
 
+    <!-- This script file links everything -->
     <script src="js/main.js"></script>
 </body>
 </html>

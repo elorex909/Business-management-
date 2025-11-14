@@ -582,6 +582,10 @@ body.dark-mode .lesson-resources h3 {
     margin-bottom: 1.5rem;
 }
 
+/* REMOVED .pdf-viewer styles as they are no longer needed */
+/* END REMOVAL */
+
+
 /* --- Footer --- */
 .footer {
     background-color: var(--color-primary-dark);
@@ -673,4 +677,56 @@ body.dark-mode .lesson-resources h3 {
     .lesson-title {
         font-size: 2.2rem;
     }
+
+    /* NEW STYLES FOR BETTER MOBILE FEEL */
+    body {
+        font-size: 15px; /* Slightly smaller base font on mobile */
+    }
+
+    .content-section,
+    .content-section-gray {
+        padding: 3rem 0; /* Reduced vertical padding */
+    }
+
+    #hero {
+        min-height: 50vh; /* Slightly smaller hero */
+    }
+
+    #hero h1 {
+        font-size: 2.5rem; /* Smaller hero title */
+    }
+
+    #hero p {
+        font-size: 1.1rem; /* Smaller hero subtitle */
+    }
+
+    .section-title {
+        font-size: 2rem; /* Smaller section titles */
+        margin-bottom: 2rem;
+    }
+
+    .lesson-container {
+        padding: 0 1rem; /* Reduced side padding */
+    }
+    
+    .arabic-content-box {
+        padding: 1.5rem; /* Reduced padding */
+    }
+    
+    .contact-form {
+        padding: 1.5rem; /* Reduced padding */
+    }
+    
+    .courses-grid {
+        gap: 1rem; /* Reduced gap between cards */
+    }
+
+    .card-content {
+        padding: 1.5rem; /* Reduced padding in cards */
+    }
+    
+    .footer {
+        padding: 2rem 1rem;
+    }
+    /* END OF NEW STYLES */
 }
